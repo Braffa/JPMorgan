@@ -1,9 +1,8 @@
-package com.jpmorgan.beans;
+package com.jpmorgan;
 
-import java.util.Calendar;
 import java.util.Date;
 
-public abstract class BaseInstruction {
+public class Instruction {
 
 	private String entity;
 
@@ -22,8 +21,6 @@ public abstract class BaseInstruction {
 	private double pricePerUnit;
 	
 	private double tradeAmount;
-	
-	public abstract void setSettlementDate(Calendar cal);
 
 	public String getEntity() {
 		return entity;
@@ -69,6 +66,10 @@ public abstract class BaseInstruction {
 		return settlementDate;
 	}
 
+	public void setSettlementDate(Date settlementDate) {
+		this.settlementDate = settlementDate;
+	}
+
 	public int getUnits() {
 		return units;
 	}
@@ -92,5 +93,11 @@ public abstract class BaseInstruction {
 	public void setTradeAmount() {
 		this.tradeAmount = pricePerUnit * units * agreedFX;
 	}
+
+	@Override
+	public String toString() {
+		return entity + " " + tradeAmount;
+	}
+
 
 }
