@@ -8,8 +8,6 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.jpmorgan.beans.BaseInstruction;
-
 public class SettledReportTest {
 
 	SettledReport settledReport = new SettledReport();
@@ -20,10 +18,10 @@ public class SettledReportTest {
 			String userDir = System.getProperty("user.dir");
 			settledReport.processInstructions(userDir + "/src/test/resources/testData.txt");
 
-			List<BaseInstruction> lOfIncoming = settledReport.getLOfIncoming();
+			List<Instruction> lOfIncoming = settledReport.lOfIncoming;
 			assertEquals(5, lOfIncoming.size());
 
-			BaseInstruction instruction = lOfIncoming.get(0);
+			Instruction instruction = lOfIncoming.get(0);
 			assertEquals("foo1", instruction.getEntity());
 			assertEquals(10025.0, instruction.getTradeAmount(), 0.0);
 			Calendar cal = Calendar.getInstance();
@@ -64,7 +62,7 @@ public class SettledReportTest {
 			assertEquals(8, cal.get(Calendar.MONTH));
 			assertEquals(2018, cal.get(Calendar.YEAR));
 
-			List<BaseInstruction> lOfOutgoing = settledReport.getLOfOutgoing();
+			List<Instruction> lOfOutgoing = settledReport.lOfOutgoing;
 			assertEquals(4, lOfOutgoing.size());
 			
 			instruction = lOfOutgoing.get(0);
@@ -113,10 +111,10 @@ public class SettledReportTest {
 			String userDir = System.getProperty("user.dir");
 			settledReport.processInstructions(userDir + "/src/test/resources/testDataMiddleEast.txt");
 
-			List<BaseInstruction> lOfIncoming = settledReport.getLOfIncoming();
+			List<Instruction> lOfIncoming = settledReport.lOfIncoming;
 			assertEquals(5, lOfIncoming.size());
 
-			BaseInstruction instruction = lOfIncoming.get(0);
+			Instruction instruction = lOfIncoming.get(0);
 			assertEquals("foo1", instruction.getEntity());
 			assertEquals(10025.0, instruction.getTradeAmount(), 0.0);
 			Calendar cal = Calendar.getInstance();
@@ -157,7 +155,7 @@ public class SettledReportTest {
 			assertEquals(8, cal.get(Calendar.MONTH));
 			assertEquals(2018, cal.get(Calendar.YEAR));
 
-			List<BaseInstruction> lOfOutgoing = settledReport.getLOfOutgoing();
+			List<Instruction> lOfOutgoing = settledReport.lOfOutgoing;
 			assertEquals(4, lOfOutgoing.size());
 			
 			instruction = lOfOutgoing.get(0);
